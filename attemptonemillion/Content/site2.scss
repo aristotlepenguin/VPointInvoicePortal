@@ -1,0 +1,314 @@
+﻿/* Styles for validation helpers
+
+-----------------------------------------------------------*/
+// Variables
+
+//set main background-gradient
+$lightBlueGradient:       linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+
+//set main background-color & backround-border (fallback & standart)
+$blue:                    #2fa4e7;
+$grey:                    #ddd;
+
+//change background-color on hover
+$lightBlueMain:           #178acc;
+
+// -----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*custom styles*/
+.scriptMessage, .scriptMessageEvaluated
+{
+    display: none;    
+}
+
+.form-signin,
+.form-forgot-password {
+    max-width: 730px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.modal-body.error {
+    padding-left: 20px;
+    background-image: url(images/error.png)
+}
+
+
+//START styling
+//START styling
+//START styling
+
+//Global Classes
+
+.img-responsive img{
+	max-width: 100%;
+	height: auto;
+}
+
+.align {
+	&-start {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	&-center {
+		display: flex;
+		align-items: center;
+	}
+
+	&-around {
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.checkbox-align-center {
+	min-height: 38px;
+	display: flex;
+	align-items: center;
+}
+
+.m-b-15 {
+	margin-bottom: 15px;
+}
+
+.m-r-10 {
+	margin-right: 10px;
+}
+
+//NAVBAR START
+.navbarBuild {
+    background-image: $lightBlueGradient;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+		border-bottom: 1px solid #178acc;
+		&-brand {
+			text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+			img {
+				width: 100px;
+				border: 5px solid white;
+				margin-top: -4px;
+				border-radius: 3px;
+			}
+		}
+
+		&-nav {
+			> li {
+				> a {
+					text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+				}
+			}
+		}
+		//DEFAULT STYLES START
+		&-default {
+
+			.navbar-nav {
+					color: #fff;
+					> .active,
+					>	.open {
+							> a {
+								color: #fff;
+								background-image: none;
+								background-color: $lightBlueMain;
+								box-shadow: none;
+								&:focus,
+								&:hover {
+									color: #fff;
+									background-image: none;
+									background-color: $lightBlueMain;
+								}
+							}
+					}
+
+					> li {
+						> a {
+							color: #fff;
+							&:hover,
+							&:focus {
+								color: #fff;
+								background-color: $lightBlueMain;
+							}
+						}
+					}
+		
+			}
+			
+			//button styling
+			.navbar-toggle {
+
+				.icon-bar {
+					background: #fff;
+				}
+
+				&:hover,
+				&:focus {
+					background-color: $blue;
+				}
+
+			}
+
+		}
+}
+
+
+	//NAVBAR MEDIA QUERIES START
+	@media only screen and (min-width : 768px) {
+		.container > .navbar-header {
+			padding-left: 7px;
+		}
+
+		.dropdown {
+			&:hover {
+				.dropdown-menu {
+					display: block;
+				}
+			}
+			
+			&-menu {
+				> li {
+					> a{
+						&:hover,
+						&:focus {
+							color: #fff;
+							background-color: $blue;
+							background-image: none;
+						}
+					}
+				}
+			}
+		} 
+
+	}
+
+	@media only screen and (max-width : 767px) {
+		.navbar {
+			&-default {
+				.navbar-nav {
+					.open {
+						.dropdown-menu {
+							> li {
+								> a {
+									color: $grey;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+	//NAVBAR MEDIA QUERIES END
+//NAVBAR END
+
+
+
+//LandingPage Table Start
+.editContainer {
+	> .text-right {
+		padding: 0;
+	}
+}
+//LandingPage Table END
+
+
+//table, which creates dynamically (in js) gridCompanyContact START
+.gridCompanyContact {
+	margin-top: 15px;
+
+	td {
+		max-width: 300px;
+	}
+
+	input[type=checkbox] {
+		width: 14px;
+		height: 14px;
+		margin-left: 10px;
+		position: relative;
+		top: 3px;
+	}
+
+}
+
+@media only screen and (max-width : 576px) {
+
+	.gridCompanyContact {	
+		.editCompanyContact {
+			margin-right: 0;
+			margin-bottom: 5px;
+		}
+	}
+
+}
+
+//table, which creates dynamically (in js) gridCompanyContact END
+
+//Table Global START
+.tableScroll {
+	td {
+		max-width: 250px;
+		word-break: break-all;
+	}
+}
+
+.tableScrollOverflow {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+	padding-bottom: 25px;
+
+	.tableScroll-lg {
+		min-width: 1100px;
+	}
+
+	.tableScroll-md {
+		min-width: 940px;
+	}
+
+	.tableScroll-sm {
+		min-width: 720px;
+	}
+
+	.tableScroll-xs {
+		min-width: 500px;
+	}
+
+}
+
+.table-variable-width {
+	table-layout: fixed;
+}
+
+@media only screen and (max-width : 576px) {
+
+	.tableScroll {	
+		td,
+		th {
+			&:not(:last-child) {
+				width: 120px;
+			}
+		}
+	}
+
+}
+
+//Table Global END
