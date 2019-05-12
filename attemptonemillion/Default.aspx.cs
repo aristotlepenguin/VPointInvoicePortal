@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
+using System.Configuration;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using org.apache.pdfbox.pdmodel;
@@ -35,13 +36,13 @@ namespace attemptonemillion
               //  userid = Int32.Parse(searchTerm);
                 //Debug.WriteLine(userid);
             //}
-
+           
             
             if (IsPostBack)
             {
 
             }//Connection string. 
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-GCAMI11Q\MSSQLSERVER01;Initial Catalog=TutorialDB;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT userID from userids WHERE userEmail=\'" + Context.User.Identity.GetUserName() + "\';";
@@ -110,7 +111,7 @@ namespace attemptonemillion
         {
 /*
            var userid = Int32.Parse(TextBox2.Text);
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-GCAMI11Q\MSSQLSERVER01;Initial Catalog=TutorialDB;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT pdfBlob FROM invoiceTable2 WHERE userID= " + userid + " AND isMaster=1;";
@@ -127,7 +128,7 @@ namespace attemptonemillion
         protected void downloadItem(int idNo)
         {
             //conn, cmd, reader, outByte: Connection string, SQL command, data reader, and output stream respectively.
-            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-GCAMI11Q\MSSQLSERVER01;Initial Catalog=TutorialDB;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT pdfBlob FROM invoiceTable2 WHERE invoiceID= " + idNo + " AND isMaster=0;";//Extract the single invoice from the database

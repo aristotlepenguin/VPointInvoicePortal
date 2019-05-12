@@ -45,8 +45,17 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Admin?</asp:Label>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+            <div class="col-md-10">
+               
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
+                
             </div>
         </div>
     </div>

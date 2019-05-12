@@ -20,10 +20,10 @@ namespace attemptonemillion
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
         void Session_End(Object sender, EventArgs e)
-        {
+        { //Checking to make sure that the directory exists and the filepath is not the default one
             if (File.Exists(this.Session["path"].ToString()+"\\display.pdf") && this.Session["path"].ToString()!=@"C:\Users\danie\source\repos\attemptonemillion\attemptonemillion\pdfpaths")
             {
-                Debug.Write("Two");
+                //If the session expires, the associated directory is deleted.
                 Directory.Delete(this.Session["path"].ToString(), true);
 
             }

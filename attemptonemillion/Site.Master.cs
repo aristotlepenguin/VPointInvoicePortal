@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
@@ -7,6 +8,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using System.Configuration;
 
 namespace attemptonemillion
 {
@@ -69,7 +71,27 @@ namespace attemptonemillion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //var testDiv = Lo
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+                conn.Open();
+                SqlCommand cmd = conn.CreateCommand();
 
+                cmd.CommandText = "SELECT isAdmin FROM userids WHERE userEmail = \'" + Context.User.Identity.GetUserName() + "\';";
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (reader.GetBoolean(0) == false) {
+                        var invisible = LoginView1.FindControl("RegisterButton");
+                        invisible.Visible = false;
+                    }
+
+                }
+                conn.Close();
+                reader.Close();
+                
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
